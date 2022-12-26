@@ -1,0 +1,38 @@
+<div class="container">
+<h1>University Dashboard</h1>
+<nav class="navbar">
+    <input 
+        class="form-control"
+        type="text"
+        name="searchTerm"
+        [(ngModel)] = "searchTerm"
+        (ngModelChange)="search()"
+       />
+</nav>
+
+<div class="table-responsive">
+<table class="table table-bordered">
+    <thead>
+    <tr>
+        <th (click)="sort('id')">Alpha Two Code <i class="fa fa-sort"></i></th>
+        <th>Name</th>
+        <th>Web Pages</th>
+        <th>State Province</th>
+        <th>Domains</th>
+        <th>Country</th>
+    </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let university of universities | orderBy:key:reverse | paginate:{itemsPerPage:5,currentPage: p}| unique ;">
+        <td>{{university.alpha_two_code}}</td>
+        <td>{{university.name}}</td>
+        <td>{{university.web_pages}}</td>
+        <td>{{university.province}}</td>
+        <td>{{university.domains}}</td>
+        <td>{{university.country}}</td>
+    </tr>
+    </tbody>
+    <pagination-controls (pageChange) = "p = $event"></pagination-controls>
+</table>
+</div>
+</div>

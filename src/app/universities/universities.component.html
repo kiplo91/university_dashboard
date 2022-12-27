@@ -42,7 +42,7 @@
         <td>{{university.country}}</td>
     </tr>
     </tbody>
-    <pagination-controls (pageChange) = "p = $event"></pagination-controls>
+    <pagination-controls (pageChange) = "p = $event" (pageBoundsCorrection)="p = $event"></pagination-controls>
 </table>
 </div>
 </div>
